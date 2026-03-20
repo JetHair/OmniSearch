@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+        <title>
+            Search - {{query}}
+        </title>
+        <link rel="stylesheet" href="static/main.css">
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+        <link rel="search" 
+        type="application/opensearchdescription+xml" 
+        title="Search" href="/opensearch.xml">
+    </head>
+    
+    <body class="results-view">
+        <header>
+            <h1>
+                Search<span>Search</span>
+            </h1>
+            <form action="/search" method="GET" class="search-form">
+                <input name="q" type="text" class="search-box" autocomplete="off" placeholder="Search the web..."
+                value="{{query}}">
+            </form>
+        </header>
+        <nav class="nav-tabs">
+            <div class="nav-container">
+                <a href="/search?q={{query}}" class="active">
+                    All
+                </a>
+                <a href="/images?q={{query}}">
+                    Images
+                </a>
+            </div>
+        </nav>
+        <div class="content-layout">
+            <aside class="sidebar-spacer">
+            </aside>
+            <main class="results-container">
+                {{for result in results}}
+                <div class="result">
+                    <span class="url">
+                        {{result[1]}}
+                    </span>
+                    <a href="{{result[0]}}">
+                        {{result[2]}}
+                    </a>
+                    <p class="desc">
+                        {{result[3]}}
+                    </p>
+                </div>
+                {{endfor}}
+
+                <nav class="pagination">
+                    <a class="pagination-btn prev" href="/search?q={{query}}&p={{prev_page}}">
+                        &larr; Page {{prev_page}}
+                    </a>
+                    <span class="pagination-current">Page {{page}}</span>
+                    <a class="pagination-btn next" href="/search?q={{query}}&p={{next_page}}">
+                        Page {{next_page}} &rarr;
+                    </a>
+                </nav>
+            </main>
+            <aside class="infobox-sidebar">
+            {{if exists infoboxes}}
+              {{for info in infoboxes}}
+                 <section class="infobox">
+                     <div class="infobox-header">
+                         <h2 class="infobox-title">
+                             {{info[0]}}
+                         </h2>
+                     </div>
+                     <div class="infobox-main">
+                         <img src="{{info[1]}}" alt="{{info[0]}}" class="infobox-image">
+                         <div class="infobox-content"> <p class="infobox-summary">
+                                 {{info[2]|safe}}
+                             </p>
+                             <a class="read-more" href="{{info[3]}}">
+                                 Read More
+                             </a>
+                         </div>
+                     </div>
+                 </section>
+                 {{endfor}}
+               {{endif}}
+            </aside>
+        </div>
+    </body>
+
+</html>

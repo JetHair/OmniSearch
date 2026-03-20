@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+        <title>
+            Search Images - {{query}}
+        </title>
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+        <link rel="stylesheet" href="static/main.css">
+    </head>
+    
+    <body class="images-view">
+        <header>
+            <h1>
+                Search<span>Search</span>
+            </h1>
+            <form action="/images" method="GET" class="search-form">
+                <input name="q" autocomplete="off"="text" class="search-box" placeholder="Search for images..."
+                value="{{query}}">
+            </form>
+        </header>
+        <nav class="nav-tabs">
+            <div class="nav-container">
+                <a href="/search?q={{query}}">
+                    All
+                </a>
+                <a href="/images?q={{query}}" class="active">
+                    Images
+                </a>
+            </div>
+        </nav>
+        <main class="image-results-container">
+            <div class="image-grid">
+                {{for img in images}}
+                <div class="image-card">
+                    <div class="image-wrapper">
+                        <img src="{{img[0]}}" alt="{{img[1]}}" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="overlay-buttons">
+                                <a href="{{img[3]}}" target="_blank" class="overlay-btn primary">
+                                    View Image
+                                </a>
+                                <a href="{{img[2]}}" target="_blank" class="overlay-btn secondary">
+                                    Visit Site
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <span class="image-caption">
+                            {{img[1]}}
+                        </span>
+                        <span class="image-source">
+                            {{img[2]}}
+                        </span>
+                    </div>
+                </div>
+                {{endfor}}
+            </div>
+            <nav class="pagination">
+                <a class="pagination-btn prev" href="/images?q={{query}}&p={{prev_page}}">
+                    &larr; Page {{prev_page}}
+                </a>
+                <span class="pagination-current">Page {{page}}</span>
+                <a class="pagination-btn next" href="/images?q={{query}}&p={{next_page}}">
+                    Page {{next_page}} &rarr;
+                </a>
+            </nav>
+        </main>
+    </body>
+
+</html>
