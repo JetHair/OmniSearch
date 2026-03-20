@@ -1,17 +1,17 @@
 :root {
-    --bg-main: #f0efeb;
-    --bg-card: #e0dcd4;
-    --border: #d8d6d3;
-    --text-primary: #1a1d21;
-    --text-secondary: #4a4d51;
-    --text-muted: #5f5c58;
-    --accent: #1a1d21;
-    --accent-glow: rgba(26, 29, 33, 0.08);
+    --bg-main: #000000;
+    --bg-card: #22262b;
+    --border: #282c34;
+    --text-primary: #f0efeb;
+    --text-secondary: #ccc4b4;
+    --text-muted: #8b919a;
+    --accent: #ccc4b0;
+    --accent-glow: rgba(204, 196, 176, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-main: #1a1d21;
+        --bg-main: #000000;
         --bg-card: #22262b;
         --border: #282c34;
         --text-primary: #f0efeb;
