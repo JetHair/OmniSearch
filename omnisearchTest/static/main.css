@@ -321,6 +321,7 @@ h1 span {
 
 .result a {
     color: var(--accent);
+    font-family: DepartureMono Nerd Font Mono, sans-serif;
     text-decoration: none;
     font-size: 1.25rem;
     display: inline-block;
@@ -507,6 +508,7 @@ h1 span {
     }
 
     .result a {
+        font-family: DepartureMono Nerd Font Mono, sans-serif;
         font-size: 1.1rem;
         word-break: break-word;
     }
