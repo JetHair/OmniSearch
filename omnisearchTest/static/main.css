@@ -37,6 +37,10 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+h2 {
+    font-family: DepartureMono Nerd Font Mono, sans-serif;
+}
+
 img[src=""] {
     display: none;
 }
